@@ -13,6 +13,8 @@ Created on 10 juin 2014
 import socket               # Import socket module
 
 
+
+
 def start():
     s = socket.socket()         # Create a socket object
     host = socket.gethostname()
