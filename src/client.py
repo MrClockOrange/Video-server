@@ -11,7 +11,7 @@ import socket               # Import socket module
 
 def start():
     s = socket.socket()         # Create a socket object
-    host = '192.168.0.20' # Get local machine name
+    host = 'raspberrypi'        # Get local machine name
     port = 12345                # Reserve a port for your service.
 
     s.connect((host, port))
