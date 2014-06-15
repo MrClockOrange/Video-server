@@ -1,3 +1,4 @@
+#!/usr/bin/python
 '''
 Created on 10 juin 2014
 
@@ -8,7 +9,6 @@ Created on 10 juin 2014
 
 @author: sylvainmougel
 '''
-#!/usr/bin/python           # This is server.py file
 
 import socket               # Import socket module
 

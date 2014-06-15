@@ -20,4 +20,4 @@ def start():
     s.close                     # Close the socket when done
 
 if __name__ == '__main__':
-    
+    start()
