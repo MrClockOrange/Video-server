@@ -18,7 +18,7 @@ def start():
     host = socket.gethostname()
     print host
     port = 12345                # Reserve a port for your service
-    s.bind((host, port))        # Bind to the port
+    s.bind(('', port))        # Bind to the port
     
     s.listen(5)                 # Now wait for client connection.
     while True:
