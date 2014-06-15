@@ -1,11 +1,10 @@
+#!/usr/bin/python           # This is client.py file
+
 '''
 Created on 15 juin 2014
 
 @author: sylvainmougel
 '''
-
-
-#!/usr/bin/python           # This is client.py file
 
 import socket               # Import socket module
 

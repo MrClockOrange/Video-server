@@ -16,6 +16,7 @@ import socket               # Import socket module
 def start():
     s = socket.socket()         # Create a socket object
     host = socket.gethostname()
+    print host
     port = 12345                # Reserve a port for your service
     s.bind((host, port))        # Bind to the port
     
