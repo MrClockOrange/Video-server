@@ -30,7 +30,6 @@ def get_movies(path):
     movies_list = []
     
     for f in os.listdir(movies_dir):
-        print f
         
         if isdir(join(path,f)):
             movies_list.extend(get_movies(join(path,f)))
