@@ -6,8 +6,6 @@ from os.path import isdir, isfile, join
 movies_dir = '/home/pi/data/movies'
 
 
-
-
 class Movie(object):
     
     def __init__(self, name, path):
