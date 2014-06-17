@@ -30,10 +30,15 @@ def get_movies(path):
     movies_list = []
     
     for f in os.listdir(movies_dir):
-        
-        if isdir(join(path,f)):
-            movies_list.extend(get_movies(join(path,f)))
-        elif isfile(join(path,f)):
+        full_file_path = join(path,f)
+        if isdir(full_file_path):
+            
+            print "dir :" + full_file_path
+            movies_list.extend(get_movies(full_file_path))
+            
+        elif isfile(full_file_path):
+            
+            print "file :" + full_file_path
             movies_list.append(f) 
             
     return movies_list
