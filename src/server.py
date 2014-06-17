@@ -21,6 +21,8 @@ class Movies(object):
         
 
 
+
+
 def get_movies(path):
     """
     return the list of all the movie under a given path
