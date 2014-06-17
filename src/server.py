@@ -11,9 +11,12 @@ Created on 10 juin 2014
 '''
 
 import socket               # Import socket module
+import os
 
-
-
+def get_movies():
+    movies_dir = '/home/pi/data/movies'
+    return os.listdir(movies_dir)
+    
 
 def start():
     s = socket.socket()         # Create a socket object
@@ -27,7 +30,7 @@ def start():
         print "Wait for a connection"
         c, addr = s.accept()     # Establish connection with client.
         print 'Got connection from', addr
-        c.send('Thank you for connecting')
+        c.send(str(get_movies()))
         c.close()                # Close the connection
 
 
