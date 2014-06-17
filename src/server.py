@@ -29,7 +29,8 @@ def get_movies(path):
     """
     movies_list = []
     
-    for f in  os.listdir(movies_dir):
+    for f in os.listdir(movies_dir):
+        print f
         if isdir(f):
             movies_list.extend(get_movies(join(path,f)))
         elif isfile(f):
