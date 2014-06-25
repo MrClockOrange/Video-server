@@ -69,7 +69,7 @@ def start():
         print "Wait for a connection"
         c, addr = s.accept()     # Establish connection with client.
         print 'Got connection from', addr
-        bytes_send = c.send((get_movies(movies_dir)))
+        bytes_send = c.send((Movies(get_movies(movies_dir)).get_names()))
         print bytes_send
         c.close()                # Close the connection
 
