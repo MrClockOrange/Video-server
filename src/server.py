@@ -28,8 +28,11 @@ def get_movies(path):
     return the list of all the movie under a given path
     """
     movies_list = []
+    
     print "call get movie with path :" + path
-    for f in os.listdir(movies_dir):
+    
+    for f in os.listdir(path):
+        
         full_file_path = join(path,f)
         if isdir(full_file_path):
             

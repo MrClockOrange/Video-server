@@ -3,7 +3,6 @@
 '''
 Created on 15 juin 2014
 
-@author: sylvainmougel
 '''
 
 import socket               # Import socket module
