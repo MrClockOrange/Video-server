@@ -22,7 +22,7 @@ def start():
             break
     s.close                     # Close the socket when done
     
-    movie_list =  '.'.join(packet_list).split(',')
+    movie_list =  '.'.join(packet_list).replace('[', '').replace(']', '').split(',')
     for movie in movie_list:
         print movie
 
