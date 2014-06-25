@@ -28,6 +28,7 @@ def get_movies(path):
     return the list of all the movie under a given path
     """
     movies_list = []
+    extension = ('avi', 'mkv', 'mp4')
     
     print "call get movie with path :" + path
     
@@ -39,11 +40,10 @@ def get_movies(path):
             print "dir :" + full_file_path
             movies_list.extend( get_movies(full_file_path) )
             
-        elif isfile(full_file_path):
+        elif isfile(full_file_path) and full_file_path[-3:] in extension:
             
-            print "file :" + full_file_path
             movies_list.append(f) 
-            
+    print movies_list
     return movies_list
     
 
