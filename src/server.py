@@ -52,8 +52,8 @@ def get_movies(path):
             movies_list.extend( get_movies(full_file_path) )
             
         elif isfile(full_file_path) and full_file_path[-3:] in util.extension:
-            Movie(f, full_file_path)
-            movies_list.append(Movie)
+            m = Movie(f, full_file_path)
+            movies_list.append(m)
     print movies_list
     return movies_list
     
