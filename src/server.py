@@ -27,6 +27,10 @@ class Movies(object):
     
     def add(self, movie):
         self.movie_list.append(movie)
+        
+    def __str__(self):
+        return map(str(), self.movie_list)
+        
 
         
         
