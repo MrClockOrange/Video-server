@@ -11,7 +11,7 @@ class Movie(object):
     
     def __init__(self, name, full_path):
         self.ext = name[-3:]
-        self.name = name[:-3]
+        self.name = name[:-4]
         self.full_path = full_path
     
     def __str__(self):
@@ -22,20 +22,18 @@ class Movie(object):
 
 class Movies(object):
     
-    def __init__(self, path):
-        self.movie_list = []
+    def __init__(self, movies):
+        self.movie_list = movies
+        self.names = []
+        for m in movies:
+            self.names.append(m.get_name())
+
+    def get_len(self):
+        return len(self.movie_list)
+
+    def get_names(self):
+        return self.names
     
-    def add(self, movie):
-        self.movie_list.append(movie)
-        
-    def __str__(self):
-        return map(str(), self.movie_list)
-        
-
-        
-        
-
-
 
 
 def get_movies(path):
@@ -45,20 +43,17 @@ def get_movies(path):
     movies_list = []
     
     
-    print "call get movie with path :" + path
-    
     for f in os.listdir(path):
         
         full_file_path = join(path,f)
         if isdir(full_file_path):
             
-            print "dir :" + full_file_path
             movies_list.extend( get_movies(full_file_path) )
             
         elif isfile(full_file_path) and full_file_path[-3:] in util.extension:
             m = Movie(f, full_file_path)
             movies_list.append(m)
-    print movies_list
+    
     return movies_list
     
 
@@ -74,7 +69,7 @@ def start():
         print "Wait for a connection"
         c, addr = s.accept()     # Establish connection with client.
         print 'Got connection from', addr
-        bytes_send = c.send(str(get_movies(movies_dir)))
+        bytes_send = c.send((get_movies(movies_dir)))
         print bytes_send
         c.close()                # Close the connection
 

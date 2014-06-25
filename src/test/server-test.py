@@ -18,9 +18,14 @@ class Test(unittest.TestCase):
 
 
     def testGetMoovies(self):
-        movies = server.get_movies('/Users/sylvainmougel/video_sync')
-        self.failIf(len(movies) == 3)
+        movies = server.Movies(server.get_movies('/Users/sylvainmougel/video_sync'))
+        
+        for m in movies.movie_list:
+            print m.get_name()
 
+        print movies.get_names()
+        
+        self.failIf(movies.get_len() != 55)
 
 
 
