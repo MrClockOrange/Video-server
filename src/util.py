@@ -6,3 +6,4 @@ Created on 17 juin 2014
 
 
 extension = ('avi', 'mkv', 'mp4')
+commands = ('MOVIES', 'END', 'LAUNCH')

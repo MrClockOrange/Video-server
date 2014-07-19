@@ -2,6 +2,8 @@
 import socket               # Import socket module
 import os
 import util
+import threading
+import subprocess
 from os.path import isdir, isfile, join
 
 movies_dir = '/home/pi/data/movies'
@@ -55,25 +57,56 @@ def get_movies(path):
             movies_list.append(m)
     
     return movies_list
-    
 
-def start():
-    s = socket.socket()         # Create a socket object
-    host = socket.gethostname()
-    print host
-    port = 12345                # Reserve a port for your service
-    s.bind(('', port))        # Bind to the port
+
+
+def launch():
+    print subprocess.Popen("ls", stdout=subprocess.PIPE).stdout.read()
+
+
+class Server(threading.Thread):
     
-    s.listen(5)                 # Now wait for client connection.
-    while True:
-        print "Wait for a connection"
-        c, addr = s.accept()     # Establish connection with client.
-        print 'Got connection from', addr
-        bytes_send = c.send((str(Movies(get_movies(movies_dir)).get_names())))
-        print bytes_send
-        c.close()                # Close the connection
+    def __init__(self, port, movie_dir):
+        threading.Thread.__init__(self)
+        self.port = port
+        self.sock = socket.socket()         # Create a socket object
+        self.stop = False
+        self.dir = movie_dir
+    
+    def end(self):
+        print 'Close socket'
+        self.sock.close()
+        self.stop = True
+        
+        
+    def run(self):
+        try:
+            self.sock.bind(('', self.port))        # Bind to the port
+        
+            self.sock.listen(5)                 # Now wait for client connection.
+            while not self.stop:
+                print "Wait for a connection"
+                c, addr = self.sock.accept()     # Establish connection with client.
+                task = c.recv(8)
+                print 'Got connection from', addr, 'action to do', task
+                if task == 'END':
+                    self.end()
+                elif task == 'MOVIES':
+                    bytes_send = c.send((str(Movies(get_movies(self.dir)).get_names())))
+                    print bytes_send
+                elif task == 'LAUNCH':
+                    bytes_send = c.send(str(launch()))
+                    print bytes_send
+                    
+                c.close()    
+                # Close the connection
+                
+            print "Quit server thread"
+        except:
+            raise
 
 
 
 if __name__ == '__main__':
-    start()
+    s = Server(12345, movies_dir)
+    s.start()
