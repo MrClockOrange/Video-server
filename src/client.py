@@ -42,7 +42,7 @@ class Client():
         s.send('END')
         s.close
         
-    def lauch(self):
+    def launch(self):
         s = socket.socket()         # Create a socket object
         s.connect((self.host, self.port))
         s.send('LAUNCH')
@@ -52,4 +52,6 @@ class Client():
 
 if __name__ == '__main__':
     c = Client('raspberrypi', 12345)
-    c.start()
+    c.get_movie_list()
+    c.launch()
+    c.close_server()
