@@ -61,7 +61,7 @@ def get_movies(path):
 
 
 def launch():
-    print subprocess.Popen("omxplayer -o local /home/pi/data/movies/The\ Wire\ Season\ 1/The\ Wire\ -\ 1x03\ -\ The\ Buys.DVD.Thomilla.fr.avi", stdout=subprocess.PIPE).stdout.read()
+    print subprocess.Popen(["omxplayer", "-o local /home/pi/data/movies/The\ Wire\ Season\ 1/The\ Wire\ -\ 1x03\ -\ The\ Buys.DVD.Thomilla.fr.avi"], stdout=subprocess.PIPE).stdout.read()
 
 
 class Server(threading.Thread):

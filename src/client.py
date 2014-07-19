@@ -54,4 +54,3 @@ if __name__ == '__main__':
     c = Client('raspberrypi', 12345)
     c.get_movie_list()
     c.launch()
-    c.close_server()
