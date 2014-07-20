@@ -61,7 +61,7 @@ def get_movies(path):
 
 
 def launch():
-    print subprocess.Popen(["omxplayer -o local /home/pi/data/movies/Fargo.S01E08.FASTSUB.VOSTFR.HDTV.XviD-ADDiCTiON"], stdout=subprocess.PIPE, shell=True).stdout.read()
+    print subprocess.Popen(["omxplayer", "-o local", "/home/pi/data/movies/FGame.Of.Thrones.S04E09.FASTSUB.VOSTFR.720p.HDTV.x264-F4ST.mkv"], stdout=subprocess.PIPE, shell=True).stdout.read()
 
 
 class Server(threading.Thread):
